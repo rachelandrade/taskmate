@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import { Footer } from './Footer';
+import { Header } from './Header';
+import { TasksList } from './TasksList';
+import { AddTask } from './AddTask';
+import { useState } from 'react';
+export const App = () => {
+  const [newTask, setNewTask] = useState("");
+  const handleClick = (value) => {
+    console.log(value)
+    setNewTask(value)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Header />
+      <main>
+        <AddTask handleClick={handleClick} />
+        <TasksList newTask={newTask} />
+      </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;
